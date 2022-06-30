@@ -1,15 +1,17 @@
-import requests
-from config import api_key
+from flask import Flask, render_template, redirect
+from flask_pymongo import PyMongo
 
-url = "https://unofficial-redfin.p.rapidapi.com/properties/list"
+app = Flask(__name__)
 
-querystring = {"region_id":"30749","region_type":"6","uipt":"1,2,3,4,7,8","status":"9","sf":"1,2,3,5,6,7","num_homes":"50"}
+# Use flask_pymongo to set up mongo connection
 
-headers = {
-	"X-RapidAPI-Key": api_key,
-	"X-RapidAPI-Host": "unofficial-redfin.p.rapidapi.com"
-}
+app.config["MONGO_URI"] = "mongodb://localhost:27017/homes_db"
+mongo = PyMongo(app)
 
-response = requests.request("GET", url, headers=headers, params=querystring)
+@app.route("/")
+def index():
+    homes = mongo.db.homes.find_one()
+    return render_template("index.html", homes=homes)
 
-print(response.text)
+if __name__ == "__main__":
+    app.run(debug=True)
