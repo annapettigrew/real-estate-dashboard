@@ -13,17 +13,6 @@ db = client.homes_db
 def query_city(region_id, num_homes):
 
     url = "https://unofficial-redfin.p.rapidapi.com/properties/list"
-    
-    if region_id == 29470:
-        city = 'Chicago'
-    elif region_id == 18142:
-        city = 'Tampa'
-    elif region_id == 30756:
-        city = 'Atlanta'
-    elif region_id == 17151:
-        city = 'San Francisco'
-    elif region_id == 30818:
-        city = 'Austin'
  
     querystring = {
 		"region_id":region_id,
@@ -42,7 +31,6 @@ def query_city(region_id, num_homes):
     data = response.json()
 	
     query_dict = {
-        'city': city,
         'region_id': region_id,
 		'response_json': data,
 	}

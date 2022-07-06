@@ -10,7 +10,6 @@
 </head>
 
 <body>
-
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
@@ -21,36 +20,18 @@
     <div class="row">
       <div class="col-md-4">
         <div id="info">
-            selector
+          <select id="selCity" onchange="optionChanged(this.value)">
+            <option value="29470">Chicago</option>
+            <option value="18142">Tampa</option>
+            <option value="30756">Atlanta</option>
+            <option value="17151">San Francisco</option>
+            <option value="30818">Austin</option>
+          </select>
         </div>
       </div>
       <div class="col-md-8">
-        <h2>{{homes['homes'][0]['homeData']['addressInfo']['city']}}, {{homes['homes'][0]['homeData']['addressInfo']['state']}}</h2>
-        <h4>{{homes['homes'][0]['homeData']['addressInfo']['formattedStreetLine']}} {{homes['homes'][0]['homeData']['addressInfo']['city']}}, {{homes['homes'][0]['homeData']['addressInfo']['state']}}  {{homes['homes'][0]['homeData']['addressInfo']['zip']}}</h4>
-        <table>
-            <tbody>
-              <tr>
-                <td>Home Price</td>
-                <td id="price">{{homes['homes'][0]['homeData']['priceInfo']['amount']['value']}}</td>
-              </tr>
-              <tr>
-                <td>Time on Market</td>
-                <td id="time_on_market">{{homes['homes'][0]['homeData']['daysOnMarket']['daysOnMarket']['value']}}</td>
-              </tr>
-              <tr>
-                <td>Beds</td>
-                <td id="beds">{{homes['homes'][0]['homeData']['beds']['value']}}</td>
-              </tr>
-              <tr>
-                <td>Baths</td>
-                <td id="baths">{{homes['homes'][0]['homeData']['baths']['value']}}</td>
-              </tr>
-              <tr>
-                <td>Square Feet</td>
-                <td id="sqft">{{homes['homes'][0]['homeData']['sqftInfo']['amount']['value']}}</td>
-              </tr>
-            </tbody>
-            </table>
+        <div id="header"></div>
+        <div class="map"></div>
       </div>
     </div>
     <div class="row footer">
@@ -59,8 +40,9 @@
   </div>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
-  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
   <script src="./static/js/app.js"></script>
+  <script src="./static/js/logic.js"></script>
   
 </body>
 
