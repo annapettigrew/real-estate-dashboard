@@ -13,4 +13,4 @@ function optionChanged(val) {
     });
 };
 
-optionChanged("29470");
+optionChanged(29470);

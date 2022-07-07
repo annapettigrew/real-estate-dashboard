@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
 import query
-import pymongo
 import json
 from bson import BSON
 from bson import json_util
@@ -20,8 +19,9 @@ def index():
 
 @app.route("/city/<city_id>")
 def city(city_id):
-    city = mongo.db.cities.find_one({"region_id":city_id})
-    return json.loads(json_util.dumps(city))
+    city = mongo.db.cities.find_one({"region_id":int(city_id)},{"_id":0})
+    city_data = json.loads(json_util.dumps(city))
+    return city_data
 
 @app.route("/<city_id>/<num_homes>")
 def scraper(city_id, num_homes):
