@@ -41,18 +41,25 @@ function createMarkers(data) {
   }
   
   var homeLayer = L.layerGroup(homeMarkers);
-  map.addLayer(homeLayer)
-
   var dayLayer = L.layerGroup(dayMarkers);
-
   var priceLayer = L.layerGroup(priceMarkers);
+  map.addLayer(homeLayer);
   
+  var street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  })
+
+  var baseMaps = {
+    "Street": street,
+  };
+
   var overlayMaps = {
-    "Price": priceLayer,
-    "Homes": homeLayer,
-    "Days on Market": dayLayer
-    };
-  L.control.layers(overlayMaps).addTo(map);
+    "Prices":priceLayer,
+    "Homes":homeLayer,
+    "Days on Market":dayLayer
+  };
+
+  L.control.layers(baseMaps,overlayMaps).addTo(map);
 }
 
 var map = null;
@@ -66,5 +73,5 @@ map = new L.Map('map');
 map.addLayer(osmLayer);
 
 function setView(lat, lon) {
-  map.setView(new L.LatLng(lat,lon), 12);
+  map.setView(new L.LatLng(lat,lon), 10);
 }
