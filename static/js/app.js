@@ -14,7 +14,6 @@ function optionChanged(val) {
         var lon = addyInfo.centroid.centroid.longitude
         setView(lat,lon)
         createMarkers(data)
-        console.log(data.response_json.homes[0].homeData.daysOnMarket.daysOnMarket.value)
     });
 };
 
