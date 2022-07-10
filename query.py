@@ -31,11 +31,16 @@ def query_city(region_id, num_homes):
     data = response.json()
 	
     query_dict = {
-        'region_id': region_id,
+        'region_id': int(region_id),
 		'response_json': data,
 	}
-    # db.cities.insert_one(query_dict)
 	
     return query_dict
 
-# query_city(29470,10)
+# populate_db function queries with the following region ids for dev purposes
+# def populate_db():
+#     region_id = [29470, 18142, 30756, 17151, 30818]
+#     for i in region_id:
+#         q = query_city(i, 50)
+#         db.cities.insert_one(q)
+# populate_db()
