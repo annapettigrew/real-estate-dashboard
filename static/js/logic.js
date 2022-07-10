@@ -1,10 +1,12 @@
 function createMarkers(data) {
-  let homes = data.response_json['homes'];
+  let homes = data.response_json.homes;
   for (let i = 0; i < homes.length; i++) {
-    let lat = homes[i]['homeData']['addressInfo']['centroid']['centroid']['latitude']
-    let lon = homes[i]['homeData']['addressInfo']['centroid']['centroid']['longitude']
+    let lat = homes[i].homeData.addressInfo.centroid.centroid.latitude
+    let lon = homes[i].homeData.addressInfo.centroid.centroid.longitude
+    let addy = homes[i].homeData.addressInfo.formattedStreetLine
+    let daysOnMarket = homes[i].homeData.daysOnMarket.daysOnMarket.value
     var homeMarker = L.marker([lat, lon])
-        .bindPopup("<h3>" + lat + "</h3");
+        .bindPopup("<h3>" + addy + "</h3><br />" + "Days on Market: " + daysOnMarket);
     homeMarker.addTo(map)
   }
 }

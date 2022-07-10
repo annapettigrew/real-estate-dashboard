@@ -9,10 +9,12 @@ function optionChanged(val) {
     console.log(val);
     url = `/city/${val}`;
     d3.json(url).then((data) => {
-        lat = data.response_json['homes'][0]['homeData']['addressInfo']['centroid']['centroid']['latitude']
-        lon = data.response_json['homes'][0]['homeData']['addressInfo']['centroid']['centroid']['longitude']
+        var addyInfo = data.response_json.homes[0].homeData.addressInfo
+        var lat = addyInfo.centroid.centroid.latitude
+        var lon = addyInfo.centroid.centroid.longitude
         setView(lat,lon)
         createMarkers(data)
+        console.log(data.response_json.homes[0].homeData.daysOnMarket.daysOnMarket.value)
     });
 };
 
