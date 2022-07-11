@@ -13,7 +13,7 @@ function createMarkers(data) {
     
     priceMarkers.push(
       L.circle([lat,lon], {
-          fillOpacity: 0.75,
+          fillOpacity: 0.5,
           color: "white",
           fillColor: "red",
           // Adjust the radius.
@@ -24,7 +24,7 @@ function createMarkers(data) {
 
     dayMarkers.push(
       L.circle([lat,lon], {
-          fillOpacity: 1,
+          fillOpacity: 0.3,
           color: "white",
           fillColor: "blue",
           radius: (daysOnMarket)*100,
@@ -35,7 +35,9 @@ function createMarkers(data) {
     homeMarkers.push(
       L.marker([lat,lon])
         .bindPopup(`
-            <h4>${addy}</h4><br /> Days on Market: ${daysOnMarket}
+            <h4>${addy}</h4><br /> 
+            Days on Market: ${daysOnMarket}<br />
+            Price: $${price}
         `)
     );
   }
@@ -60,6 +62,7 @@ function createMarkers(data) {
   };
 
   L.control.layers(baseMaps,overlayMaps).addTo(map);
+
 }
 
 var map = null;
@@ -74,4 +77,55 @@ map.addLayer(osmLayer);
 
 function setView(lat, lon) {
   map.setView(new L.LatLng(lat,lon), 10);
-}
+};
+
+function bar(x, y) {
+  var data = [{
+      type: "bar",
+      x: x,
+      y: y,
+      margin: {
+          l: 10,
+          r: 10,
+          t: 10,
+          b: 10
+      },
+      marker: {
+          size: x,
+      }
+  }];
+
+  var layout = {
+      plot_bgcolor: "rgba(0,0,0,0)",
+      paper_bgcolor: "rgba(0,0,0,0)",
+      title: {
+        text: 'Price by Time on Market',
+        font: {
+            family: 'Courier New, monospace',
+            size: 24
+        },
+        xref: 'paper',
+        x: 0.05,
+      },
+      xaxis: {
+        title: {
+            text: 'Home Price',
+            font: {
+                family: 'Courier New, monospace',
+                size: 18,
+            }
+        },
+      },
+      yaxis: {
+        title: {
+            text: 'Time on Market',
+            font: {
+                family: 'Courier New, monospace',
+                size: 18,
+            }
+        },
+      },
+  };
+
+  Plotly.newPlot('bar', data, layout);
+};

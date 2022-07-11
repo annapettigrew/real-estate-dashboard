@@ -1,4 +1,17 @@
 #map {
     width: 600px;
-    height: 400px;
+    height: 300px;
+}
+
+.main {
+    margin:0;
+    padding:0;
+    background-color: aliceblue;
+    flex: auto;
+    align-content: center;
+}
+
+#bar {
+    margin:0;
+    padding:0;
 }
