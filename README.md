@@ -1,6 +1,8 @@
 ## TECH CITY REAL ESTATE
 Github Repository: https://github.com/annapettigrew/project-02-group-06 <br />  
-Team Members
+
+Collaborators
+
 - Anna Pettigrew: 
     - github username: annapettigrew
 - Tyler Hill: 
