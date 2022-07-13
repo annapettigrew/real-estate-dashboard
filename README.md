@@ -1,4 +1,4 @@
-# <Tech City Real Estate>
+##Tech City Real Estate
 
 Github Repository: https://github.com/annapettigrew/project-02-group-06 <br />  
 Team Members
