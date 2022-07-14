@@ -13,7 +13,7 @@ Github Repository: https://github.com/annapettigrew/team-05-project-03 <br />
     - github username: phfaulkner
 
 
-## DESCRIPTION
+## Description
 
 For this analysis, we utilized an api to gather the real estate data from https://rapidapi.com/apidojo/api/unofficial-redfin/
 
@@ -58,6 +58,8 @@ To narrow our results, we decided to focus on top tech cities in the U.S. (will 
 - Chicago was surprisingly lower than the National Average home price.
 - San Francisco’s median home price, unsurprisingly, was 3x the national average, while having a price per sqft nearly 4x higher than national average, owing to its unique geographic location
 
+
+## Dashboard
 
 <img width="868" alt="Screen Shot 2022-07-13 at 9 41 08 PM" src="https://user-images.githubusercontent.com/97136642/178868945-18e1542b-f490-4ca4-9a24-6c2ffb8fa4f3.png">
 
