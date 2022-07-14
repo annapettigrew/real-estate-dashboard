@@ -31,12 +31,36 @@ Information included on the final includes:
     - Mean Baths
     - Mean sqft
 
+## Tools Used
+- Python / Pandas
+- Flask
+- MongoDB
+- D3.js
+- Chart.js
+- Plotly.js
+- HTML/CSS
+
 
 ## Coding Approach
 
 We created a Python/Flask-powered API to pull our queries from the Unofficial Redfin API and insert the results into a MongoDB database. From there, we created our interactive dashboard to visually explore the results.
 
+To narrow our results, we decided to focus on top tech cities in the U.S. (will expand to 10). The following cities saw massive growth in their real estate markets in the preceding years:
+- Chicago, IL
+- San Francisco, CA
+- Austin, TX
+- Tampa, FL
+- Atlanta, GA
+
+
 ## Observations
 
 - Chicago was surprisingly lower than the National Average home price.
-- SanFrancisco was almost triple the National Average.
+- San Francisco’s median home price, unsurprisingly, was 3x the national average, while having a price per sqft nearly 4x higher than national average, owing to its unique geographic location
+
+
+<img width="868" alt="Screen Shot 2022-07-13 at 9 41 08 PM" src="https://user-images.githubusercontent.com/97136642/178868945-18e1542b-f490-4ca4-9a24-6c2ffb8fa4f3.png">
+
+
+
+<img width="868" alt="Screen Shot 2022-07-13 at 9 41 40 PM" src="https://user-images.githubusercontent.com/97136642/178869007-ed3b307f-6bf6-4765-9fce-3e62692bf19a.png">
