@@ -6,6 +6,7 @@
 .main {
     padding:10;
     margin-top:10px;
+    margin-bottom: 50px;
     background-color: aliceblue;
     border-radius: 10px;
 }
@@ -29,4 +30,9 @@
 
 #statTable td {
     padding:10px;
+    background-color: aliceblue;
+}
+
+.row-label {
+    color: #4f6c89;
 }

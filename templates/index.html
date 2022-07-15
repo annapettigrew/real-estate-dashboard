@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Real Estate Dashboard</title>
+  <title>Tech City Real Estate Dashboard</title>
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -19,7 +19,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h2>Real Estate Dashboard</h2>
+        <h2>Tech City Real Estate Dashboard</h2>
         <p>Choose a city from the menu below to get started</p>
       </div>
     </div>
@@ -40,6 +40,7 @@
         <div id="header"></div>
         <div id="map"></div>
         <div id="bar"></div>
+        <canvas id="scatter"></canvas>
       </div>
     </div>
     <div class="row footer">
@@ -53,6 +54,7 @@
   crossorigin=""></script>
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js"></script>
   <script src="./static/js/app.js"></script>
   <script src="./static/js/logic.js"></script>
   

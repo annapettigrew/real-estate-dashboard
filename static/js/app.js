@@ -30,8 +30,8 @@ function optionChanged(val) {
                 time.push(timeOnMarket.value)
             };
 
-            if ((homePrice / sqFt) !== undefined){
-                pricePerSqft.push(homePrice / sqFt)
+            if ((sqFt) !== undefined){
+                pricePerSqft.push(homePrice.value / sqFt.value)
             };
 
             if (bed !== undefined){
@@ -57,22 +57,23 @@ function optionChanged(val) {
         var meanLon = d3.mean(lons)
         var meanPrice = Math.round(d3.mean(homePrices)).toLocaleString()
         var medianPrice = Math.round(d3.median(homePrices))
+        var medianSqFt = Math.round(d3.median(pricePerSqft))
         // price dif from natl avg
         var priceDif = (medianPrice - 428379)
-        var meanBeds = Math.round(d3.mean(beds))
-        var meanBaths = Math.round(d3.mean(baths))
-        var meanSqft = Math.round(d3.mean(sqFeet))
-        // var meanSqftPrice = d3.mean(pricePerSqft)
+        var meanBeds = Math.round(d3.median(beds))
+        var meanBaths = Math.round(d3.median(baths))
+        var meanSqft = Math.round(d3.median(sqFeet))
 
-        cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPrice, priceDif)
+        cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPrice, priceDif, medianSqFt)
         setView(meanLat,meanLon)
         createMarkers(data)
         bar(homePrices, time);
+        // scatter(homePrices, time);
 
     });
 };
 
-function cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPrice, priceDif) {
+function cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPrice, priceDif, medianSqFt) {
     d3.select("#header").html(`
         <h4>${cityState}</h4><br />
     `)
@@ -89,34 +90,45 @@ function cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPri
         <table>
             <tbody id="statTable">
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td>National Average</td>
+                    <td class="row-label"></td>
+                    <td class="row-label"></td>
+                    <td class="row-label">Nat'l Average</td>
+                    <td class="row-label">Price Difference</td>
                 </tr>
                 <tr>
-                    <td>Median Price</td>
-                    <td>$${medianPrice}</td>
+                    <td class="row-label">Median Price</td>
+                    <td>$${medianPrice.toLocaleString()}</td>
                     <td>$428,379</td>
                     <td style="color:${color}">$${priceDif.toLocaleString()}</td>
                 </tr>
                 <tr>
-                    <td>Mean Price</td>
+                    <td class="row-label">Mean Price</td>
                     <td>$${meanPrice}</td>
                     <td></td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td>Mean Beds</td>
+                    <td class="row-label">Median Beds</td>
                     <td>${meanBeds}</td>
                     <td></td>
-                </tr>
-                <tr>
-                    <td>Mean Baths</td>
-                    <td>${meanBaths}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>Mean sqft</td>
+                    <td class="row-label">Median Baths</td>
+                    <td>${meanBaths}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Median sqft</td>
                     <td>${meanSqft}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="row-label">Median Price per Sqft</td>
+                    <td>$${medianSqFt.toLocaleString()}</td>
+                    <td></td>
                     <td></td>
                 </tr>
             </tbody>

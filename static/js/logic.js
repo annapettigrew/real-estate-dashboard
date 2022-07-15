@@ -19,7 +19,10 @@ function createMarkers(data) {
           // Adjust the radius.
           radius: (price)/750,
           weight: 1
-          }).bindPopup(`<h4>${addy}</h4><br /> Days on Market: ${daysOnMarket}`)
+          }).bindPopup(`
+            <h4>${addy}</h4><br /> 
+            Days on Market: ${daysOnMarket}<br />
+            Price: $${price}`)
     );
 
     dayMarkers.push(
@@ -29,7 +32,10 @@ function createMarkers(data) {
           fillColor: "blue",
           radius: (daysOnMarket)*100,
           weight:0.5,
-      })
+      }).bindPopup(`
+          <h4>${addy}</h4><br /> 
+          Days on Market: ${daysOnMarket}<br />
+          Price: $${price}`)
     );
     
     homeMarkers.push(
@@ -91,7 +97,7 @@ function bar(x, y) {
           b: 10
       },
       marker: {
-          size: x,
+          size: y,
       }
   }];
 
@@ -128,4 +134,42 @@ function bar(x, y) {
   };
 
   Plotly.newPlot('bar', data, layout);
+};
+
+function prepData(x,y) {
+  let data = [];
+  
+  for (let i = 0; i < x.length; i++) {
+    data.push({x:x[i], y:y[i]})
+  }
+  return data;
+}
+
+function scatter(x,y) {
+  let myChart = document.getElementById('scatter');
+  const data = {
+    datasets: [{
+      label: 'Scatter Dataset',
+      data: prepData(x,y)
+    }]
+  }
+  
+  const config = {
+    type: 'scatter',
+    data: data,
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+        },
+        title: {
+          display: true,
+          text: 'Home Prices vs. Time on Market'
+        }
+      }
+    }
+  }
+  
+  let newChart = new Chart(myChart, config);
 };
