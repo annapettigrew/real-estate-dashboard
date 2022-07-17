@@ -147,12 +147,12 @@ function prepData(x,y) {
 
 let newChart = null;
 
-function scatter(x,y) {
+function scatter(a,b) {
   let myChart = document.getElementById('scatter').getContext('2d');
   const data = {
     datasets: [{
-      label: 'Scatter Dataset',
-      data: prepData(x,y)
+      label: 'Homes',
+      data: prepData(a,b)
     }]
   }
   
@@ -167,8 +167,19 @@ function scatter(x,y) {
         },
         title: {
           display: true,
-          text: 'Home Prices vs. Time on Market'
+          text: 'Home Prices vs. Time on Market (days)'
         }
+      },
+      elements: {
+        point: {
+          radius: 5,
+          pointStyle: 'circle',
+          backgroundColor: '#8EC5FC'
+        }
+      },
+      scales: {
+        x: { title: { display: true, text: 'Home Price'}},
+        y: { title: { display: true, text: 'Time on Market (days)'}}
       }
     }
   }
