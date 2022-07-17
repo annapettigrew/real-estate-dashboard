@@ -67,9 +67,8 @@ function optionChanged(val) {
         cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPrice, priceDif, medianSqFt)
         setView(meanLat,meanLon)
         createMarkers(data)
-        bar(homePrices, time);
-        // scatter(homePrices, time);
-
+        // bar(homePrices, time);
+        scatter(homePrices, time);
     });
 };
 
@@ -136,4 +135,4 @@ function cityInfo(cityState, meanPrice, meanBeds, meanBaths, meanSqft, medianPri
     `)
 };
 
-optionChanged(29470);
+optionChanged("29470");

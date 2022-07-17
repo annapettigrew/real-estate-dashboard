@@ -145,8 +145,10 @@ function prepData(x,y) {
   return data;
 }
 
+let newChart = null;
+
 function scatter(x,y) {
-  let myChart = document.getElementById('scatter');
+  let myChart = document.getElementById('scatter').getContext('2d');
   const data = {
     datasets: [{
       label: 'Scatter Dataset',
@@ -170,6 +172,8 @@ function scatter(x,y) {
       }
     }
   }
-  
-  let newChart = new Chart(myChart, config);
+  if (newChart!=null){
+    newChart.destroy();
+  }
+  newChart = new Chart(myChart, config);
 };
